@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.highScoreButton {
+    margin-left: 50px;
+    margin-top: 50px;
+} 
+
+.highScoreButton button {
+    background-color: white;
+    border: none;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    color: violet;
+}
+
+.timer {
+    margin-right: 50px;
+    margin-top: 50px;
+} 
+
+.timer h2 {
+    font-weight: lighter;
+}
