@@ -5,8 +5,8 @@
 }
 
 .highScoreButton {
-    margin-left: 50px;
-    margin-top: 50px;
+    margin-left: 20px;
+    margin-top: 20px;
 } 
 
 .highScoreButton button {
@@ -19,10 +19,40 @@
 }
 
 .timer {
-    margin-right: 50px;
-    margin-top: 50px;
+    margin-right: 20px;
+    margin-top: 20px;
 } 
 
-.timer h2 {
+.timer p {
     font-weight: lighter;
+    font-size: 20px;
+}
+
+.quizContent {
+    text-align: center;
+}
+
+.quizContent h1 {
+    font-size: 40px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.quizContent p {
+    width: 500px;
+    margin: auto;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+.quizContent span {
+    font-weight: bolder;
+}
+
+.quizContent button {
+    font-size: 30px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 20px;
 }
