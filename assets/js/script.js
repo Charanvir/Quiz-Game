@@ -1,4 +1,4 @@
-var startingTime = 5;
+var startingTime = 75;
 var startButton = document.querySelector(".start");
 var timerEl = document.querySelector(".timeDisplay");
 
