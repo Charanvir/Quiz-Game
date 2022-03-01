@@ -1,4 +1,4 @@
-var startingTime = 75;
+var startingTime = 5;
 var startButton = document.querySelector(".start");
 var timerEl = document.querySelector(".timeDisplay");
 
@@ -10,6 +10,7 @@ startButton.addEventListener("click", function () {
         startingTime--;
         if (startingTime < 0) {
             clearInterval(timeFunction);
+            alert("TIME IS UP! GAME OVER!");
         }
     }
 })
