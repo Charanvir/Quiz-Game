@@ -1,6 +1,9 @@
 var startingTime = 75;
 var startButton = document.querySelector(".start");
 var timerEl = document.querySelector(".timeDisplay");
+var questionsEl = document.querySelector(".title");
+
+
 
 var quiz = [
     {
@@ -46,6 +49,17 @@ var quiz = [
 
 ]
 
+
+
+function addQuestion() {
+    questionsEl.innerText = quiz[0].question1;
+    questionsEl.classList.add("question");
+    questionsEl.classList.remove("title");
+}
+
+
+
+
 startButton.addEventListener("click", function () {
     var timeFunction = setInterval(countdown, 1000);
 
@@ -57,5 +71,7 @@ startButton.addEventListener("click", function () {
             alert("TIME IS UP! GAME OVER!");
         }
     }
+
+    addQuestion();
 })
 
