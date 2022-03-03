@@ -28,7 +28,7 @@
     font-size: 20px;
 }
 
-.quizContent {
+.mainContent {
     text-align: center;
 }
 
@@ -37,7 +37,7 @@
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.quizContent p {
+.instructions {
     width: 600px;
     margin: auto;
     font-weight: 500;
@@ -45,17 +45,8 @@
     font-size: 20px;
 }
 
-.quizContent p:last-of-type {
-    margin-top: none;
-    font-size: 30px;
-    font-weight: bold;
-}
 
-.quizContent span {
-    font-weight: bolder;
-}
-
-.quizContent button {
+.start {
     font-size: 30px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 10px;
@@ -66,5 +57,38 @@
 }
 
 .question {
-    font-size: 30px;
+    font-size: 20px;
+    margin: auto;
 }
+
+.hidden {
+    display: none;
+}
+
+
+.choicesFlex {
+    display: flex;
+    font-size: 20px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 20px;
+    margin: 5px 0 5px 0;
+    min-width: 50px;
+}
+
+.quiz {
+    width: 50%;
+    margin: auto;
+}
+
+.quizFeedback {
+    width: 50%;
+    margin: auto;
+}
+
+.quizFeedback h2 {
+    opacity: 50%;
+}
+

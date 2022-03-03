@@ -1,67 +1,86 @@
-var startingTime = 75;
-var startButton = document.querySelector(".start");
-var timerEl = document.querySelector(".timeDisplay");
-var questionsEl = document.querySelector(".title");
-
-
-
 var quiz = [
     {
-        question1: "To save data into localStorage, it must be in what format?",
-        choice1: "Object",
-        choice2: "Array",
-        choice3: "String",
-        choice4: "Boolean",
+        question: "1. To save data into localStorage, it must be in what format?",
+        options: [
+            "Object",
+            "Array",
+            "String",
+            "Boolean"
+        ],
         answer: "String"
     },
     {
-        question2: "Which of the following methods will convert an JavaScript object into a string?",
-        choice1: "JSON.stringify()",
-        choice2: "JSON.parse()",
-        choice3: "JSON.makeString",
-        choice4: "JSON.convertToString",
+        question: "2. Which of the following methods will convert an JavaScript object into a string?",
+        options: [
+            "JSON.stringify()",
+            "JSON.parse()",
+            "JSON.makeString",
+            "JSON.convertToString",
+        ],
         answer: "JSON.stringify()"
     },
     {
-        question3: "Which of the following is used in JavaScript to represent logical OR?",
-        choice1: "&&",
-        choice2: "||",
-        choice3: "!",
-        choice4: "|&",
+        question: "3. Which of the following is used in JavaScript to represent logical OR?",
+        options: [
+            "&&",
+            "||",
+            "!",
+            "|&"
+        ],
         answer: "||"
     },
     {
-        question4: "Which of the following will turn a line of code into a comment in JavaScript?",
-        choice1: "//",
-        choice2: "<%",
-        choice3: "~~",
-        choice4: "<&",
+        question: "4. Which of the following will turn a line of code into a comment in JavaScript?",
+        options: [
+            "//",
+            "<%",
+            "~~",
+            "<&"
+        ],
         answer: "//"
     },
     {
-        question5: "Which of the following will create a template literal in JavaScript",
-        choice1: "~~",
-        choice2: "()",
-        choice3: "<>",
-        choice4: "``",
+        question: "5. Which of the following will create a template literal in JavaScript",
+        options: [
+            "~~",
+            "()",
+            "<>",
+            "``"
+        ],
         answer: "``"
     },
+    {
+        question: "5. Which of the following will create a template literal in JavaScript",
+        options: [
+            "~~",
+            "()",
+            "<>",
+            "``"
+        ],
+        answer: "``"
+    },
+];
 
-]
+var startingTime = 75;
+var startButton = document.querySelector(".start");
+var timerEl = document.querySelector(".timeDisplay");
+var titlesEl = document.querySelector(".title");
+var instructionsEl = document.querySelector(".instructions");
+var quizSectionEl = document.querySelector(".quiz");
+var questionSectionEl = document.querySelector(".questions");
+var optionsSectionEl = document.querySelector(".options");
+var question = document.getElementById("question");
+var option1 = document.getElementById("option1");
+var option2 = document.getElementById("option2");
+var option3 = document.getElementById("option3");
+var option4 = document.getElementById("option4");
+var feedBack = document.getElementById("feedBack");
 
 
 
-function addQuestion() {
-    questionsEl.innerText = quiz[0].question1;
-    questionsEl.classList.add("question");
-    questionsEl.classList.remove("title");
-}
-
-
-
-
-startButton.addEventListener("click", function () {
+var startGame = startButton.addEventListener("click", function () {
     var timeFunction = setInterval(countdown, 1000);
+    i = 0;
 
     function countdown() {
         timerEl.innerHTML = `Time: ${startingTime}`;
@@ -69,9 +88,57 @@ startButton.addEventListener("click", function () {
         if (startingTime < 0) {
             clearInterval(timeFunction);
             alert("TIME IS UP! GAME OVER!");
+            backToHomePage();
+            startingTime = 0;
+            timerEl.innerHTML = `Time: ${startingTime}`;
+            return console.log(startingTime);
+        } else if (i > 4) {
+            clearInterval(timeFunction);
+            alert("Game Over!!");
+            backToHomePage();
+            return console.log(startingTime + 1);
         }
     }
-
     addQuestion();
-})
+});
 
+function backToHomePage() {
+    titlesEl.classList.remove("hidden");
+    instructionsEl.classList.remove("hidden");
+    startButton.classList.remove("hidden");
+    quizSectionEl.classList.add("hidden");
+    feedBack.classList.add("hidden");
+};
+
+function addQuestion() {
+    titlesEl.classList.add("hidden");
+    instructionsEl.classList.add("hidden");
+    startButton.classList.add("hidden");
+    questionSectionEl.classList.remove("hidden");
+    question.innerText = quiz[i].question
+    addOptions();
+};
+
+function addOptions() {
+    optionsSectionEl.classList.remove("hidden");
+    option1.innerText = quiz[i].options[0];
+    option2.innerText = quiz[i].options[1];
+    option3.innerText = quiz[i].options[2];
+    option4.innerText = quiz[i].options[3];
+};
+
+
+
+optionsSectionEl.addEventListener("click", (event) => {
+    var isCorrect = event.target.innerText === quiz[i].answer;
+    if (!isCorrect) {
+        feedBack.innerText = "Incorrect"
+        startingTime = startingTime - 15;
+        i++;
+        addQuestion();
+    } else {
+        feedBack.innerText = "Correct"
+        i++;
+        addQuestion();
+    }
+})
