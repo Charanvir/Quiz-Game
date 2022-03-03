@@ -45,9 +45,8 @@
     font-size: 20px;
 }
 
-
 .start {
-    font-size: 30px;
+    font-size: 20px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 10px;
     background-color: blue;
@@ -64,7 +63,6 @@
 .hidden {
     display: none;
 }
-
 
 .choicesFlex {
     display: flex;
@@ -90,5 +88,15 @@
 
 .quizFeedback h2 {
     opacity: 50%;
+}
+
+.reset {
+    font-size: 20px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 20px;
+    margin-top: 50px;
 }
 

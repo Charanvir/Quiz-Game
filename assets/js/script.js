@@ -50,22 +50,22 @@ var quiz = [
         answer: "``"
     },
     {
-        question: "5. Which of the following will create a template literal in JavaScript",
+        question: "6. Which of the following notations will not make a function",
         options: [
-            "~~",
-            "()",
-            "<>",
-            "``"
+            "var functionName = function (){}",
+            "function functionName (){}",
+            "var functionName = ()=>{}",
+            "functionName ()"
         ],
-        answer: "``"
-    },
+        answer: "functionName ()"
+    }
 ];
 
 var startingTime = 75;
+var mainContentEl = document.querySelector(".mainContent");
 var startButton = document.querySelector(".start");
 var timerEl = document.querySelector(".timeDisplay");
 var titlesEl = document.querySelector(".title");
-var instructionsEl = document.querySelector(".instructions");
 var quizSectionEl = document.querySelector(".quiz");
 var questionSectionEl = document.querySelector(".questions");
 var optionsSectionEl = document.querySelector(".options");
@@ -75,8 +75,6 @@ var option2 = document.getElementById("option2");
 var option3 = document.getElementById("option3");
 var option4 = document.getElementById("option4");
 var feedBack = document.getElementById("feedBack");
-
-
 
 var startGame = startButton.addEventListener("click", function () {
     var timeFunction = setInterval(countdown, 1000);
@@ -92,7 +90,7 @@ var startGame = startButton.addEventListener("click", function () {
             startingTime = 0;
             timerEl.innerHTML = `Time: ${startingTime}`;
             return console.log(startingTime);
-        } else if (i > 4) {
+        } else if (i > 5) {
             clearInterval(timeFunction);
             alert("Game Over!!");
             backToHomePage();
@@ -103,17 +101,14 @@ var startGame = startButton.addEventListener("click", function () {
 });
 
 function backToHomePage() {
-    titlesEl.classList.remove("hidden");
-    instructionsEl.classList.remove("hidden");
-    startButton.classList.remove("hidden");
+    mainContentEl.classList.remove("hidden")
     quizSectionEl.classList.add("hidden");
     feedBack.classList.add("hidden");
+    startButton.classList.add("hidden");
 };
 
 function addQuestion() {
-    titlesEl.classList.add("hidden");
-    instructionsEl.classList.add("hidden");
-    startButton.classList.add("hidden");
+    mainContentEl.classList.add("hidden")
     questionSectionEl.classList.remove("hidden");
     question.innerText = quiz[i].question
     addOptions();
@@ -126,8 +121,6 @@ function addOptions() {
     option3.innerText = quiz[i].options[2];
     option4.innerText = quiz[i].options[3];
 };
-
-
 
 optionsSectionEl.addEventListener("click", (event) => {
     var isCorrect = event.target.innerText === quiz[i].answer;
