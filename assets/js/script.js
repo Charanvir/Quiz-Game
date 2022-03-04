@@ -78,6 +78,8 @@ var option2 = document.getElementById("option2");
 var option3 = document.getElementById("option3");
 var option4 = document.getElementById("option4");
 var feedBack = document.getElementById("feedBack");
+var score = localStorage.getItem("highScore");
+var instructions = document.querySelector(".instructions")
 
 
 var startGame = startButton.addEventListener("click", function () {
@@ -95,10 +97,15 @@ var startGame = startButton.addEventListener("click", function () {
             timerEl.innerHTML = `Time: ${startingTime}`;
         } else if (i > 5) {
             clearInterval(timeFunction);
-            alert(`Game Over. Your Score was ${startingTime + 1}`);
-            displayHighScore();
-            saveScore();
-            return console.log(startingTime + 1);
+            if (score > startingTime || "highScore" === null) {
+                noHighScore();
+                startingTime = 0;
+                timerEl.innerHTML = `Time: ${startingTime}`;
+            } else {
+                displayHighScore();
+                saveScore();
+                return console.log(startingTime + 1);
+            }
         }
     }
     addQuestion();
@@ -110,6 +117,15 @@ function backToHomePage() {
     feedBack.classList.add("hidden");
     startButton.classList.add("hidden");
 };
+
+function noHighScore() {
+    mainContentEl.classList.remove("hidden")
+    quizSectionEl.classList.add("hidden");
+    feedBack.classList.add("hidden");
+    startButton.classList.add("hidden");
+    titlesEl.innerHTML = "You did not beat the High Score";
+    instructions.innerHTML = "Click Reset To Try Again"
+}
 
 function addQuestion() {
     mainContentEl.classList.add("hidden")
@@ -146,7 +162,7 @@ function displayHighScore() {
     feedBack.classList.add("hidden");
     startButton.classList.add("hidden");
     headerSectionEl.classList.add("hidden");
-    highScoreDisplay.innerHTML = "Your Score is: " + (startingTime + 1);
+    highScoreDisplay.innerHTML = "YOU BEAT THE HIGH SCORE: " + (startingTime + 1);
 }
 
 var saveScore = () => {
