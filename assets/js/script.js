@@ -79,7 +79,9 @@ var option3 = document.getElementById("option3");
 var option4 = document.getElementById("option4");
 var feedBack = document.getElementById("feedBack");
 var score = localStorage.getItem("highScore");
-var instructions = document.querySelector(".instructions")
+var instructions = document.querySelector(".instructions");
+var initials = document.querySelector("#highScoreInitials");
+var playerName = document.querySelector("input[name=initials]");
 
 
 var startGame = startButton.addEventListener("click", function () {
@@ -123,7 +125,7 @@ function noHighScore() {
     quizSectionEl.classList.add("hidden");
     feedBack.classList.add("hidden");
     startButton.classList.add("hidden");
-    titlesEl.innerHTML = "You did not beat the High Score";
+    titlesEl.innerHTML = "Your Score: " + startingTime + " did not beat the high score";
     instructions.innerHTML = "Click Reset To Try Again"
 }
 
@@ -142,19 +144,19 @@ function addOptions() {
     option4.innerText = quiz[i].options[3];
 };
 
-optionsSectionEl.addEventListener("click", (event) => {
-    var isCorrect = event.target.innerText === quiz[i].answer;
-    if (!isCorrect) {
-        feedBack.innerText = "Incorrect"
-        startingTime = startingTime - 15;
-        i++;
-        addQuestion();
+
+function saveInitials(event) {
+    if (playerName.value == "" || playerName.value === null) {
+        event.preventDefault();
+        alert("Please enter your initials")
     } else {
-        feedBack.innerText = "Correct"
-        i++;
-        addQuestion();
+        var saveInitials = () => {
+            console.log(playerName.value)
+            localStorage.setItem("highScoreName", playerName.value);
+        };
+        saveInitials();
     }
-})
+};
 
 function displayHighScore() {
     highScoreSectionEl.classList.remove("hidden");
@@ -169,21 +171,18 @@ var saveScore = () => {
     localStorage.setItem("highScore", startingTime + 1);
 }
 
-
-var initials = document.querySelector("#highScoreInitials");
-var playerName = document.querySelector("input[name=initials]");
-
 initials.addEventListener("click", saveInitials);
 
-function saveInitials(event) {
-    if (playerName.value == "" || playerName.value === null) {
-        event.preventDefault();
-        alert("Please enter your initials")
+optionsSectionEl.addEventListener("click", (event) => {
+    var isCorrect = event.target.innerText === quiz[i].answer;
+    if (!isCorrect) {
+        feedBack.innerText = "Incorrect"
+        startingTime = startingTime - 15;
+        i++;
+        addQuestion();
     } else {
-        var saveInitials = () => {
-            console.log(playerName.value)
-            localStorage.setItem("highScoreName", playerName.value);
-        };
-        saveInitials();
+        feedBack.innerText = "Correct"
+        i++;
+        addQuestion();
     }
-};
+})
