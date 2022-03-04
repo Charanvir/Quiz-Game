@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200px;
+    background-color: beige;
+}
+
+.highScoreSection {
+    background-color: burlywood;
+    width: 50%;
+}
+
+.highScoreHeader h1 {
+    font-size: 40px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.highScoreHeader {
+    text-align: center;
+}
+
+.highScoreButtons {
+    display: flex;
+    margin-top: 50px;
+}
+
+.highScoreButtons a {
+    margin-right: 50px;    
+}
+
+.highScoreButtons button {
+    background-color: blue;
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 10px;
+    color: white;
+    border-radius: 20px;
+}
+
+.highScoreSection p {
+    font-size: 30px;
+    padding-left: 10px;
+}

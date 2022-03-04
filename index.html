@@ -12,26 +12,57 @@
 <body>
     <header class="header">
         <div class="highScoreButton">
-            <button>View high scores</button>
+            <a href="./highscore.html">
+                <button>View High Score</button>
+            </a>
         </div>
         <div class="timer">
-            <h2>Time: 0</h2>
+            <p class="timeDisplay">Timer</p>
         </div>
     </header>
 
-    <section class="quizContent">
+    <section class="mainContent">
+        <h1 class="title">Coding Quick Challenge</h1>
+        <p class="instructions">Answer the following 5 questions within 75 seconds. Your final score will be the
+            time left remaining when all questions have been answered. Every incorrect answer will result in a 15 second
+            penalty.
+            The timer will start counting down when you click the Start Game button!
+        </p>
+        <button class="start">Start Game</button>
+        <a href="./index.html">
+            <button class="reset">Reset</button>
+        </a>
+    </section>
 
+    <section class="quiz">
+        <div class="questions hidden">
+            <h1 id="question"></h1>
 
-
-
+        </div>
+        <div class="options hidden">
+            <button class="choicesFlex" id="option1"></button>
+            <button class="choicesFlex" id="option2"></button>
+            <button class="choicesFlex" id="option3"></button>
+            <button class="choicesFlex" id="option4"></button>
+        </div>
     </section>
 
     <section class="quizFeedback">
+        <div class="feedback">
+            <h2 id="feedBack"></h2>
 
-
-
+        </div>
     </section>
 
+    <section class="highScoreSection hidden">
+        <h1 class="highScore">Game Over!!</h1>
+        <p id="highScore"></p>
+        <form action="./highscore.html">
+            <label for="initials">Enter Initials:</label>
+            <input type="text" name="initials">
+            <input type="submit" value="Submit" id="highScoreInitials">
+        </form>
+    </section>
 
 
 
