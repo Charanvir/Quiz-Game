@@ -97,7 +97,8 @@ var startGame = startButton.addEventListener("click", function () {
             alert(`Game Over. Your Score was ${startingTime + 1}`);
             // backToHomePage();
             displayHighScore()
-            // return console.log(startingTime + 1);
+            saveScore();
+            return console.log(startingTime + 1);
         }
     }
     addQuestion();
@@ -148,4 +149,7 @@ function displayHighScore() {
     highScoreDisplay.innerHTML = startingTime + 1;
 }
 
-localStorage.setItem("highScore", startingTime);
+var saveScore = () => {
+    localStorage.setItem("highScore", startingTime + 1);
+}
+
