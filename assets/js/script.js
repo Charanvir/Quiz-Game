@@ -55,9 +55,9 @@ var quiz = [
             "var functionName = function (){}",
             "function functionName (){}",
             "var functionName = ()=>{}",
-            "functionName ()"
+            "functionName()"
         ],
-        answer: "functionName ()"
+        answer: "functionName()"
     }
 ];
 
@@ -66,9 +66,12 @@ var mainContentEl = document.querySelector(".mainContent");
 var startButton = document.querySelector(".start");
 var timerEl = document.querySelector(".timeDisplay");
 var titlesEl = document.querySelector(".title");
+var headerSectionEl = document.querySelector(".header");
 var quizSectionEl = document.querySelector(".quiz");
 var questionSectionEl = document.querySelector(".questions");
 var optionsSectionEl = document.querySelector(".options");
+var highScoreSectionEl = document.querySelector(".highScoreSection");
+var highScoreDisplay = document.querySelector(".highScore");
 var question = document.getElementById("question");
 var option1 = document.getElementById("option1");
 var option2 = document.getElementById("option2");
@@ -89,12 +92,12 @@ var startGame = startButton.addEventListener("click", function () {
             backToHomePage();
             startingTime = 0;
             timerEl.innerHTML = `Time: ${startingTime}`;
-            return console.log(startingTime);
         } else if (i > 5) {
             clearInterval(timeFunction);
-            alert("Game Over!!");
-            backToHomePage();
-            return console.log(startingTime + 1);
+            alert(`Game Over. Your Score was ${startingTime + 1}`);
+            // backToHomePage();
+            displayHighScore()
+            // return console.log(startingTime + 1);
         }
     }
     addQuestion();
@@ -135,3 +138,14 @@ optionsSectionEl.addEventListener("click", (event) => {
         addQuestion();
     }
 })
+
+function displayHighScore() {
+    highScoreSectionEl.classList.remove("hidden");
+    quizSectionEl.classList.add("hidden");
+    feedBack.classList.add("hidden");
+    startButton.classList.add("hidden");
+    headerSectionEl.classList.add("hidden");
+    highScoreDisplay.innerHTML = startingTime + 1;
+}
+
+localStorage.setItem("highScore", startingTime);
