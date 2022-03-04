@@ -13,7 +13,7 @@
     <header class="header">
         <div class="highScoreButton">
             <a href="./highscore.html">
-                <button>View high scores</button>
+                <button>View High Score</button>
             </a>
         </div>
         <div class="timer">
@@ -55,7 +55,13 @@
     </section>
 
     <section class="highScoreSection hidden">
-        <h1 class="highScore"></h1>
+        <h1 class="highScore">Game Over!!</h1>
+        <p id="highScore"></p>
+        <form action="./highscore.html">
+            <label for="initials">Enter Initials:</label>
+            <input type="text" name="initials">
+            <input type="submit" value="Submit" id="highScoreInitials">
+        </form>
     </section>
 
 

@@ -4,11 +4,12 @@ var clearHighScoreButton = document.querySelector("#clearButton");
 
 var newHighScore = function () {
     var score = localStorage.getItem("highScore");
-    if (score === null) {
+    var initials = localStorage.getItem("highScoreName");
+    if (score === null && initials === null) {
         highScoreValue.innerHTML = "No Current High Score";
 
     } else {
-        highScoreValue.innerHTML = score;
+        highScoreValue.innerHTML = initials + "-" + score;
     }
 }
 
@@ -18,6 +19,7 @@ var newHighScore = function () {
 function clearHighScore() {
     highScoreValue.textContent = "HIGH SCORE UP FOR THE TAKING!!!";
     localStorage.removeItem("highScore");
+    localStorage.removeItem("highScoreName");
 }
 
 

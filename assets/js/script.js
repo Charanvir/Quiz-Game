@@ -79,6 +79,7 @@ var option3 = document.getElementById("option3");
 var option4 = document.getElementById("option4");
 var feedBack = document.getElementById("feedBack");
 
+
 var startGame = startButton.addEventListener("click", function () {
     var timeFunction = setInterval(countdown, 1000);
     i = 0;
@@ -95,8 +96,7 @@ var startGame = startButton.addEventListener("click", function () {
         } else if (i > 5) {
             clearInterval(timeFunction);
             alert(`Game Over. Your Score was ${startingTime + 1}`);
-            // backToHomePage();
-            displayHighScore()
+            displayHighScore();
             saveScore();
             return console.log(startingTime + 1);
         }
@@ -146,10 +146,28 @@ function displayHighScore() {
     feedBack.classList.add("hidden");
     startButton.classList.add("hidden");
     headerSectionEl.classList.add("hidden");
-    highScoreDisplay.innerHTML = startingTime + 1;
+    highScoreDisplay.innerHTML = "Your Score is: " + (startingTime + 1);
 }
 
 var saveScore = () => {
     localStorage.setItem("highScore", startingTime + 1);
 }
 
+
+var initials = document.querySelector("#highScoreInitials");
+var playerName = document.querySelector("input[name=initials]");
+
+initials.addEventListener("click", saveInitials);
+
+function saveInitials(event) {
+    if (playerName.value == "" || playerName.value === null) {
+        event.preventDefault();
+        alert("Please enter your initials")
+    } else {
+        var saveInitials = () => {
+            console.log(playerName.value)
+            localStorage.setItem("highScoreName", playerName.value);
+        };
+        saveInitials();
+    }
+};
