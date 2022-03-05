@@ -125,8 +125,11 @@ function noHighScore() {
     quizSectionEl.classList.add("hidden");
     feedBack.classList.add("hidden");
     startButton.classList.add("hidden");
-    titlesEl.innerHTML = "Your Score: " + startingTime + " did not beat the high score";
+    titlesEl.innerHTML = "Your Score: " + (startingTime + 2) + " did not beat the high score";
     instructions.innerHTML = "Click Reset To Try Again"
+    var image = document.createElement("img");
+    mainContentEl.appendChild(image);
+    image.src = "https://tomysweetpea.files.wordpress.com/2013/11/trophy.jpg";
 }
 
 function addQuestion() {
@@ -164,11 +167,14 @@ function displayHighScore() {
     feedBack.classList.add("hidden");
     startButton.classList.add("hidden");
     headerSectionEl.classList.add("hidden");
-    highScoreDisplay.innerHTML = "YOU BEAT THE HIGH SCORE: " + (startingTime + 1);
+    highScoreDisplay.innerHTML = "YOU BEAT THE HIGH SCORE: " + (startingTime + 2);
+    var image = document.createElement("img");
+    highScoreSectionEl.appendChild(image);
+    image.src = "https://media.istockphoto.com/vectors/gold-trophy-with-the-name-plate-of-the-winner-of-the-competition-vector-id1168757141?k=20&m=1168757141&s=612x612&w=0&h=_jia0PPMGux63K2gqp-o0OzRcHbd6bvjVQJ70rz3nF8=";
 }
 
 var saveScore = () => {
-    localStorage.setItem("highScore", startingTime + 1);
+    localStorage.setItem("highScore", startingTime + 2);
 }
 
 initials.addEventListener("click", saveInitials);
