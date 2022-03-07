@@ -58,6 +58,20 @@ var quiz = [
             "functionName()"
         ],
         answer: "functionName()"
+    },
+
+    // Because the function is increasing by i by 1 every time the function is run, it is coming upon an error in the split second between finish question 5 and
+    // when the else if statement recognizes that it has met the i > 5 conditional. To offset this error, I added the same question one more time for aesthetic reasons
+    // this will eliminate the error, while making the quiz still seamless
+    {
+        question: "6. Which of the following notations will not make a function",
+        options: [
+            "var functionName = function (){}",
+            "function functionName (){}",
+            "var functionName = ()=>{}",
+            "functionName()"
+        ],
+        answer: "functionName()"
     }
 ];
 
@@ -94,19 +108,19 @@ var startGame = startButton.addEventListener("click", function () {
         if (startingTime < 0) {
             clearInterval(timeFunction);
             alert("TIME IS UP! GAME OVER!");
-            backToHomePage();
+            timeUp();
             startingTime = 0;
             timerEl.innerHTML = `Time: ${startingTime}`;
         } else if (i > 5) {
             clearInterval(timeFunction);
-            if (score > startingTime || "highScore" === null) {
+            if (score > (startingTime + 1) || "highScore" === null) {
                 noHighScore();
                 startingTime = 0;
                 timerEl.innerHTML = `Time: ${startingTime}`;
             } else {
                 displayHighScore();
                 saveScore();
-                return console.log(startingTime + 1);
+                return
             }
         }
     }
@@ -126,6 +140,18 @@ function noHighScore() {
     feedBack.classList.add("hidden");
     startButton.classList.add("hidden");
     titlesEl.innerHTML = "Your Score: " + (startingTime + 2) + " did not beat the high score";
+    instructions.innerHTML = "Click Reset To Try Again"
+    var image = document.createElement("img");
+    mainContentEl.appendChild(image);
+    image.src = "https://tomysweetpea.files.wordpress.com/2013/11/trophy.jpg";
+}
+
+function timeUp() {
+    mainContentEl.classList.remove("hidden")
+    quizSectionEl.classList.add("hidden");
+    feedBack.classList.add("hidden");
+    startButton.classList.add("hidden");
+    titlesEl.innerHTML = "Your Score: 0 did not beat the high score";
     instructions.innerHTML = "Click Reset To Try Again"
     var image = document.createElement("img");
     mainContentEl.appendChild(image);
